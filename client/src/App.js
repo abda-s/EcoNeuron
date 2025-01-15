@@ -5,6 +5,7 @@ import SectionPage from './pages/SectionPage';
 import SearchResultsPage from './pages/SearchResultsPage';
 import { ThemeProvider } from "@mui/material";
 import { theme } from "./theme";
+import SensorDashboard from './pages/SensorDashboard';
 
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="/" element={<MainPage />} />
           <Route path="/section/:sectionId" element={<SectionPage />} />
           <Route path="/search-results" element={<SearchResultsPage />} />
+          <Route path="/sensor-dashboard" element={<SensorDashboard />} />
           <Route path="*" element={<Navigate to={"/"} />} />
         </Routes>
       </Router>

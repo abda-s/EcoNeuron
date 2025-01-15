@@ -19,7 +19,7 @@ export default function NavBar() {
 
     const commonRoutes = [
         { label: "Home", path: '/' },
-        { label: "About", path: '/about' },
+        { label: "mariam report", path: '/sensor-dashboard' },
         { label: "Contact", path: '/contact' },
     ];
 
