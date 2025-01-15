@@ -40,8 +40,8 @@ router.get('/', async (req, res) => {
         const end = moment(endDate, 'YYYY-MM-DDTHH:mm:ss.SSS');
         console.log("the data:", startDate, endDate);
         console.log("the date:", start.toString(), end.toString());
-        
-        
+
+
         if (!start.isValid() || !end.isValid()) {
             return res.status(400).json({ error: 'Invalid date format' });
         }
@@ -51,8 +51,8 @@ router.get('/', async (req, res) => {
             where: {
                 timestamps: {
                     [Sequelize.Op.between]: [
-                        Sequelize.literal(`'${startDate}'`), 
-                        Sequelize.literal(`'${endDate}'`) 
+                        Sequelize.literal(`'${startDate}'`),
+                        Sequelize.literal(`'${endDate}'`)
                     ]
                 }
             }
@@ -65,6 +65,23 @@ router.get('/', async (req, res) => {
 
         // Return the fetched data
         res.status(200).json(sensorData);
+
+    } catch (error) {
+        console.error('Error fetching sensor data:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+
+router.get('/without-recommendation', async (req, res) => {
+    try {
+        const sensorData = await SensorsData.findAll({
+            where: {
+                recommendation: null
+            }
+        });
+
+        return res.status(200).json(sensorData);
 
     } catch (error) {
         console.error('Error fetching sensor data:', error);

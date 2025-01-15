@@ -13,6 +13,10 @@
                 type: DataTypes.BOOLEAN,
                 allowNull: false,
             },
+            recommendation: {
+                type: DataTypes.BOOLEAN,
+                allowNull: true,
+            },
         });
       
         return SensorsData;
